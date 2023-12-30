@@ -19,5 +19,12 @@ BEGIN_GAME
             HP: 100
     }
 
+    CREATE ABILITY {
+            NAME: "Solar_Power",
+            ACTION: START
+                //POKEBALL ATTACKER ---α
+                DAMAGE DEFENDER 20
+            END
+    }
 
 END_GAME
