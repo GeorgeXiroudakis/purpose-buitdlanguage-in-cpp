@@ -33,12 +33,6 @@ public:
         pokemonvect.push_back(*this);
 
     }
-
-    char operator, (class Pokemon& other){
-
-
-    }
-
 };
 
 class Abilitie{
@@ -54,21 +48,13 @@ public:
 
         abilitiesvect.push_back(*this);
 
-        abilitiesvect[0].foo();
-
     }
-
-    char operator, (class Pokemon& other){
-
-
-    }
-
 };
 
 enum at_def {attacker, defender};
 
-Pokemon attackerPok = Pokemon(" ", " ", 1000);
-Pokemon defenderPok = Pokemon(" ", " ", 1000);
+Pokemon attackerPok;
+Pokemon defenderPok;
 
 void dealDamageTo(enum at_def at_def, int points){
     if(at_def == attacker)attackerPok.hp -= points;
@@ -84,17 +70,22 @@ void dealDamageTo(enum at_def at_def, int points){
     }
 
 #define CREATE ;
+
 #define POKEMON Pokemon
+
 #define ABILITY Abilitie
 #define ACTION []() { 0 ? 1
 #define START 1 + 1;
+
+#define NAME  0 ? "dont get this"
+#define TYPE  0 ? "dont get this"
+#define HP  0 ? 0
+
 #define DAMAGE dealDamageTo(
 #define DEFENDER defender,
 
 #define END );}
 
-#define NAME  0 ? "dont get this"
-#define TYPE  0 ? "dont get this"
-#define HP  0 ? 0
+
 
 #endif //PAR_POKEMONLEAGUE_H
