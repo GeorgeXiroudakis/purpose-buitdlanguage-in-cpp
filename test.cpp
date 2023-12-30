@@ -23,6 +23,8 @@ BEGIN_GAME
             NAME: "Solar_Power",
             ACTION: START
                 DAMAGE DEFENDER 20
+                HEAL DEFENDER 20
+                DAMAGE DEFENDER 20
             END
     }
 
