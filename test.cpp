@@ -22,7 +22,6 @@ BEGIN_GAME
     CREATE ABILITY {
             NAME: "Solar_Power",
             ACTION: START
-                //POKEBALL ATTACKER ---α
                 DAMAGE DEFENDER 20
             END
     }

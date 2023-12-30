@@ -22,7 +22,8 @@ public:
     std::string name;
     std::string type;
     int hp;
-    bool isInBall;
+    std::vector<Abilitie> LearnedAbilities;
+    bool isInBall = true;
 
     Pokemon(){}
 
@@ -102,16 +103,16 @@ bool IsInBall(enum at_def at_def){
 
 #define ABILITY Abilitie
 #define ACTION []() { 0 ? 1
-#define START 1 + 1;
+#define START 1 + 1;(1+1
 
 #define NAME  0 ? "dont get this"
 #define TYPE  0 ? "dont get this"
 #define HP  0 ? 0
 
-#define DAMAGE dealDamageTo(
+#define DAMAGE );dealDamageTo(
 #define DEFENDER defender,
 #define ATTACKER attacker,
-#define HEAL healThe(
+#define HEAL );healThe(
 
 #define END );}
 
