@@ -22,6 +22,7 @@ public:
     std::string name;
     std::string type;
     int hp;
+    bool isInBall;
 
     Pokemon(){}
 
@@ -61,6 +62,32 @@ void dealDamageTo(enum at_def at_def, int points){
     else defenderPok.hp -= points;
 }
 
+void healThe(enum at_def at_def, int points){
+    if(at_def == attacker)attackerPok.hp += points;
+    else defenderPok.hp += points;
+}
+
+int getHPof(enum at_def at_def){
+    if(at_def == attacker)return attackerPok.hp;
+    else return defenderPok.hp;
+}
+
+std::string getTypeof(enum at_def at_def){
+    if(at_def == attacker)return attackerPok.type;
+    else return defenderPok.type;
+}
+
+std::string getNameof(enum at_def at_def){
+    if(at_def == attacker)return attackerPok.name;
+    else return defenderPok.name;
+}
+
+bool IsInBall(enum at_def at_def){
+    if(at_def == attacker)return attackerPok.isInBall;
+    else return defenderPok.isInBall;
+}
+
+
 #define BEGIN_GAME \
     int main() {
 
@@ -83,6 +110,8 @@ void dealDamageTo(enum at_def at_def, int points){
 
 #define DAMAGE dealDamageTo(
 #define DEFENDER defender,
+#define ATTACKER attacker,
+#define HEAL healThe(
 
 #define END );}
 
