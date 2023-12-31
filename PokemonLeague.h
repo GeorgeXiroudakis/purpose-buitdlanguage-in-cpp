@@ -58,7 +58,7 @@ enum at_def {attacker, defender};
 Pokemon attackerPok;
 Pokemon defenderPok;
 
-void dealDamageTo(enum at_def at_def, int points){
+void dealDamageTo(/*std::string str*/ enum at_def at_def, int points){
     if(at_def == attacker)attackerPok.hp -= points;
     else defenderPok.hp -= points;
 }
@@ -68,22 +68,22 @@ void healThe(enum at_def at_def, int points){
     else defenderPok.hp += points;
 }
 
-int getHPof(enum at_def at_def){
+int getHPof(enum at_def at_def, int /*ingore*/){
     if(at_def == attacker)return attackerPok.hp;
     else return defenderPok.hp;
 }
 
-std::string getTypeof(enum at_def at_def){
+std::string getTypeof(enum at_def at_def, int /*ingore*/){
     if(at_def == attacker)return attackerPok.type;
     else return defenderPok.type;
 }
 
-std::string getNameof(enum at_def at_def){
+std::string getNameof(enum at_def at_def, int /*ingore*/){
     if(at_def == attacker)return attackerPok.name;
     else return defenderPok.name;
 }
 
-bool IsInBall(enum at_def at_def){
+bool IsInBall(enum at_def at_def, int /*ingore*/){
     if(at_def == attacker)return attackerPok.isInBall;
     else return defenderPok.isInBall;
 }
@@ -109,12 +109,18 @@ bool IsInBall(enum at_def at_def){
 #define TYPE  0 ? "dont get this"
 #define HP  0 ? 0
 
-#define DAMAGE );dealDamageTo(
+#define DAMAGE ); dealDamageTo(
+#define HEAL ); healThe(
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   pokeball get in out
+#define GET_HP(x) ); getHPof( x 0
+#define GET_TYPE(x) ); getTypeof( x 0
+#define GET_NAME(x) ); getNameof( x 0
+#define IS_IN_POKEBALL(x) ); IsInBall( x 0
+
 #define DEFENDER defender,
 #define ATTACKER attacker,
-#define HEAL );healThe(
 
-#define END );}
+#define END );}           //to proto klinetai apo to dumy, ta mesaia apo to epomeno kai to teleytaio apo ayto
 
 
 

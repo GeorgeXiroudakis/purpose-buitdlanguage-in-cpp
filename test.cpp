@@ -20,12 +20,25 @@ BEGIN_GAME
     }
 
     CREATE ABILITY {
-            NAME: "Solar_Power",
+            NAME: "TEST ABILITY",
             ACTION: START
                 DAMAGE DEFENDER 20
-                HEAL DEFENDER 20
-                DAMAGE DEFENDER 20
+                DAMAGE ATTACKER 50
+                HEAL DEFENDER 30
+                HEAL ATTACKER 70
+                GET_HP(DEFENDER)
+                GET_HP(ATTACKER)
+                GET_TYPE(DEFENDER)
+                GET_TYPE(ATTACKER)
+                GET_NAME(DEFENDER)
+                GET_NAME(ATTACKER)
+                IS_IN_POKEBALL(DEFENDER)
+                IS_IN_POKEBALL(ATTACKER)
             END
     }
+
+    ;
+attackerPok = Pokemon("testname", "test type", 100);
+std::cout <<( GET_NAME(ATTACKER) )
 
 END_GAME
