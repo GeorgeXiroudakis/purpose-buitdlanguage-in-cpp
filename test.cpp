@@ -39,7 +39,7 @@ BEGIN_GAME
 
     CREATE POKEMONS [
             POKEMON{
-                    NAME: "Ho Oh",
+                    NAME: "snorlax",
                     TYPE: "Fire",
                     HP: 120
             },
@@ -50,6 +50,9 @@ BEGIN_GAME
             }
     ]
 
-    ;std::cout << pokemonvect[3].name;
+    ;
+for(int i = 0; i < pokemonvect.size(); i++){
+    std::cout << pokemonvect[i].name << std::endl;
+}
 
 END_GAME
