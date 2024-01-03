@@ -50,9 +50,50 @@ BEGIN_GAME
             }
     ]
 
+    CREATE ABILITIES [
+            ABILITY {
+            NAME: "TEST ABILITY2",
+             ACTION: START
+                        DAMAGE DEFENDER 20
+                        DAMAGE ATTACKER 50
+                        HEAL DEFENDER 30
+                        HEAL ATTACKER 70
+                        GET_HP(DEFENDER)
+                        GET_HP(ATTACKER)
+                        GET_TYPE(DEFENDER)
+                        GET_TYPE(ATTACKER)
+                        GET_NAME(DEFENDER)
+                        GET_NAME(ATTACKER)
+                        IS_IN_POKEBALL(DEFENDER)
+                        IS_IN_POKEBALL(ATTACKER)
+                        END
+            },
+            ABILITY {
+                    NAME: "TEST ABILITY3",
+                    ACTION: START
+                        DAMAGE DEFENDER 20
+                        DAMAGE ATTACKER 50
+                        HEAL DEFENDER 30
+                        HEAL ATTACKER 70
+                        GET_HP(DEFENDER)
+                        GET_HP(ATTACKER)
+                        GET_TYPE(DEFENDER)
+                        GET_TYPE(ATTACKER)
+                        GET_NAME(DEFENDER)
+                        GET_NAME(ATTACKER)
+                        IS_IN_POKEBALL(DEFENDER)
+                        IS_IN_POKEBALL(ATTACKER)
+                    END
+            }
+    ]
+
     ;
-for(int i = 0; i < pokemonvect.size(); i++){
-    std::cout << pokemonvect[i].name << std::endl;
+for(auto & i : pokemonvect){
+    std::cout << i.name << std::endl;
+}
+
+for(auto & i : abilitiesvect){
+    std::cout << i.name << std::endl;
 }
 
 END_GAME

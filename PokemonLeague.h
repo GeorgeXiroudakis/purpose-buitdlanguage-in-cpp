@@ -36,7 +36,7 @@ public:
 
     }
 
-    void operator[](Pokemon pok) {
+    void operator[](const Pokemon& pok) {
         pokemonvect.push_back(pok);
     }
 };
@@ -54,6 +54,10 @@ public:
 
         abilitiesvect.push_back(*this);
 
+    }
+
+    void operator[](const Abilitie& ab) {
+        abilitiesvect.push_back(ab);
     }
 };
 
@@ -107,6 +111,8 @@ bool IsInBall(enum at_def at_def, int /*ingore*/){
 #define POKEMONS Pokemon()
 
 #define ABILITY Abilitie
+#define ABILITIES Abilitie()
+
 #define ACTION []() { 0 ? 1
 #define START 1 + 1;(1+1
 
