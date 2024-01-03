@@ -14,7 +14,7 @@
 class Pokemon;
 class Abilitie;
 
-std::vector<Pokemon> pokemonvect;
+//std::vector<Pokemon> pokemonvect;
 std::vector<Abilitie> abilitiesvect;
 
 class Pokemon{
@@ -27,30 +27,49 @@ public:
 
     Pokemon(){}
 
-    Pokemon(std::string _name, std::string _type, int _hp){
+    Pokemon(std::string _name, std::string _type, int _hp);/*{
         this->name = _name;
         this->hp = _hp;
         this->type = _type;
 
         pokemonvect.push_back(*this);
 
-    }
-    
-    static Pokemon& operator[](size_t index){
-    	if(index < pokemonvect.size()){
-		return pokemonvect[index];
-	}else{
-		exit(EXIT_FAILURE);
-	}
-    }
+    }*/
 
-    friend Pokemon& operator,(Pokemon& left,const Pokemon& right){
-    	Pokemon::pokemonvect.push_back(right);
-	return left;
-    }
+     int friend operator,(Pokemon& left, const Pokemon& right);/*{
+            pokemonvect.push_back(right);
+            pokemonvect.push_back(left);
+	return 0;
+    }*/
 
 
 };
+
+class PokemonCollection {
+public:
+    static std::vector<Pokemon> pokemonvect;
+
+    Pokemon& operator[](Pokemon index){
+        return pokemonvect[0];
+    }
+
+};
+
+Pokemon::Pokemon(std::string _name, std::string _type, int _hp) {
+    this->name = _name;
+    this->hp = _hp;
+    this->type = _type;
+
+    PokemonCollection::pokemonvect.push_back(*this);
+
+}
+
+int operator,(Pokemon& left, const Pokemon& right){
+    PokemonCollection::pokemonvect.push_back(right);
+    PokemonCollection::pokemonvect.push_back(left);
+    return 0;
+}
+
 
 class Abilitie{
 public:
@@ -67,9 +86,9 @@ public:
 
     }
 
-    static Abilitie& operator[](size_t index){
-    	if(index < abilitievect.size()){
-		return abilitievect[index];
+    Abilitie& operator[](size_t index){
+    	if(index < abilitiesvect.size()){
+		return abilitiesvect[index];
 	}else{
 		exit(EXIT_FAILURE);
 	}
@@ -77,7 +96,7 @@ public:
     }
 
     friend Abilitie& operator,(Abilitie& left,const Abilitie& right){
-    	Abilitie::abilitievect.push_back(right);
+        abilitiesvect.push_back(right);
 	return left;
     }
 
@@ -130,7 +149,7 @@ bool IsInBall(enum at_def at_def, int /*ingore*/){
 #define CREATE ;
 
 #define POKEMON Pokemon
-#define POKEMONS Pokemon::pokemonvect
+#define POKEMONS PokemonCollection::pokemonvect
 
 #define ABILITY Abilitie
 #define ABILITIES Abilitie::abilitievector

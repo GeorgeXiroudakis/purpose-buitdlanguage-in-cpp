@@ -39,7 +39,7 @@ BEGIN_GAME
 
     CREATE POKEMONS [
 	    POKEMON {
-		NAME: "Raichu".
+		NAME: "Raichu",
 		TYPE: "Electric",
 		HP: 140
 	    },
@@ -49,5 +49,6 @@ BEGIN_GAME
 		HP: 160
 	    }
     ]
+
 
 END_GAME
