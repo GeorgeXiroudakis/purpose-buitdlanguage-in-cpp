@@ -14,7 +14,7 @@
 class Pokemon;
 class Abilitie;
 
-//std::vector<Pokemon> pokemonvect;
+std::vector<Pokemon> pokemonvect;
 std::vector<Abilitie> abilitiesvect;
 
 class Pokemon{
@@ -27,47 +27,15 @@ public:
 
     Pokemon(){}
 
-    Pokemon(std::string _name, std::string _type, int _hp);
+    Pokemon(std::string _name, std::string _type, int _hp){
+        this->name = _name;
+        this->hp = _hp;
+        this->type = _type;
 
-     int friend operator,(Pokemon& left, const Pokemon& right);
+        pokemonvect.push_back(*this);
 
-};
-
-class PokemonCollection {
-public:
-    static std::vector<Pokemon> pokemonvect;
-
-    void operator[](Pokemon& other){
-        pokemonvect.push_back(other);
     }
-
-    // Optional: Define the operator[] to access a Pokemon by index
-    Pokemon& operator[](size_t index) {
-        if (index < pokemonvect.size()) {
-            return pokemonvect[index];
-        } else {
-            // Handle out-of-bounds access or throw an exception
-            throw std::out_of_range("Index out of bounds");
-        }
-    }
-
 };
-
-Pokemon::Pokemon(std::string _name, std::string _type, int _hp) {
-    this->name = _name;
-    this->hp = _hp;
-    this->type = _type;
-
-    PokemonCollection::pokemonvect.push_back(*this);
-
-}
-
-int operator,(Pokemon& left, const Pokemon& right){
-    //PokemonCollection::pokemonvect.push_back(right);
-    PokemonCollection::pokemonvect.push_back(left);
-    return 0;
-}
-
 
 class Abilitie{
 public:
@@ -83,21 +51,6 @@ public:
         abilitiesvect.push_back(*this);
 
     }
-
-    Abilitie& operator[](size_t index){
-    	if(index < abilitiesvect.size()){
-		return abilitiesvect[index];
-	}else{
-		exit(EXIT_FAILURE);
-	}
-
-    }
-
-    friend Abilitie& operator,(Abilitie& left,const Abilitie& right){
-        abilitiesvect.push_back(right);
-	return left;
-    }
-
 };
 
 enum at_def {attacker, defender};
@@ -147,11 +100,8 @@ bool IsInBall(enum at_def at_def, int /*ingore*/){
 #define CREATE ;
 
 #define POKEMON Pokemon
-#define POKEMONS PokemonCollection::pokemonvect
 
 #define ABILITY Abilitie
-#define ABILITIES Abilitie::abilitievector
-
 #define ACTION []() { 0 ? 1
 #define START 1 + 1;(1+1
 
