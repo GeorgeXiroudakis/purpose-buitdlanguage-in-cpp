@@ -37,4 +37,19 @@ BEGIN_GAME
             END
     }
 
+    CREATE POKEMONS [
+            POKEMON{
+                    NAME: "Ho Oh",
+                    TYPE: "Fire",
+                    HP: 120
+            },
+            POKEMON{
+                    NAME: "Bulbasaur",
+                    TYPE: "Grass",
+                    HP: 85
+            }
+    ]
+
+    ;std::cout << pokemonvect[3].name;
+
 END_GAME

@@ -35,6 +35,10 @@ public:
         pokemonvect.push_back(*this);
 
     }
+
+    void operator[](Pokemon pok) {
+        pokemonvect.push_back(pok);
+    }
 };
 
 class Abilitie{
@@ -100,6 +104,7 @@ bool IsInBall(enum at_def at_def, int /*ingore*/){
 #define CREATE ;
 
 #define POKEMON Pokemon
+#define POKEMONS Pokemon()
 
 #define ABILITY Abilitie
 #define ACTION []() { 0 ? 1
