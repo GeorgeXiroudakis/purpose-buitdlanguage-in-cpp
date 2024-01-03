@@ -61,6 +61,27 @@ public:
     }
 };
 
+class Learning{
+public:
+    std::string name;
+
+    Learning(std::string pokNmae){
+        name = pokNmae;
+    }
+
+    void operator[](const std::string abName){
+        for(auto & i : pokemonvect){
+            if(i.name.compare(this->name)){
+                for(auto & y : abilitiesvect){
+                    if(y.name.compare(abName)){
+                        i.LearnedAbilities.push_back(y);
+                    }
+                }
+            }
+        }
+    }
+};
+
 enum at_def {attacker, defender};
 
 Pokemon attackerPok;
@@ -130,6 +151,10 @@ bool IsInBall(enum at_def at_def, int /*ingore*/){
 
 #define DEFENDER defender,
 #define ATTACKER attacker,
+
+#define DEAR ;Learning(
+#define LEARN )
+#define ABILITY_NAME(x) #x
 
 #define END );}           //to proto klinetai apo to dumy, ta mesaia apo to epomeno kai to teleytaio apo ayto
 

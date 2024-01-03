@@ -66,7 +66,7 @@ BEGIN_GAME
                         GET_NAME(ATTACKER)
                         IS_IN_POKEBALL(DEFENDER)
                         IS_IN_POKEBALL(ATTACKER)
-                        END
+                END
             },
             ABILITY {
                     NAME: "TEST ABILITY3",
@@ -87,13 +87,17 @@ BEGIN_GAME
             }
     ]
 
-    ;
-for(auto & i : pokemonvect){
-    std::cout << i.name << std::endl;
-}
+    DEAR "pokemon name" LEARN [
+        ABILITY_NAME(TEST ABILITY)
+    ]
 
-for(auto & i : abilitiesvect){
-    std::cout << i.name << std::endl;
-}
+//    ;
+//for(auto & i : pokemonvect){
+//    std::cout << i.name << std::endl;
+//}
+//
+//for(auto & i : abilitiesvect){
+//    std::cout << i.name << std::endl;
+//}
 
 END_GAME
