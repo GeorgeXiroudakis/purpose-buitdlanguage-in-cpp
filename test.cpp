@@ -37,4 +37,8 @@ BEGIN_GAME
             END
     }
 
+    ;
+attackerPok = Pokemon("testname", "test type", 100);
+std::cout <<( GET_NAME(ATTACKER) )
+
 END_GAME
