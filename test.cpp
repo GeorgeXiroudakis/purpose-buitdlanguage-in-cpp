@@ -37,4 +37,17 @@ BEGIN_GAME
             END
     }
 
+    CREATE POKEMONS [
+	    POKEMON {
+		NAME: "Raichu".
+		TYPE: "Electric",
+		HP: 140
+	    },
+	    POKEMON { 
+		NAME: "Blastoise",
+		TYPE: "Water",
+		HP: 160
+	    }
+    ]
+
 END_GAME

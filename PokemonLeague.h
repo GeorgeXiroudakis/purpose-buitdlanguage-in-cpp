@@ -35,6 +35,21 @@ public:
         pokemonvect.push_back(*this);
 
     }
+    
+    static Pokemon& operator[](size_t index){
+    	if(index < pokemonvect.size()){
+		return pokemonvect[index];
+	}else{
+		exit(EXIT_FAILURE);
+	}
+    }
+
+    friend Pokemon& operator,(Pokemon& left,const Pokemon& right){
+    	Pokemon::pokemonvect.push_back(right);
+	return left;
+    }
+
+
 };
 
 class Abilitie{
@@ -51,6 +66,21 @@ public:
         abilitiesvect.push_back(*this);
 
     }
+
+    static Abilitie& operator[](size_t index){
+    	if(index < abilitievect.size()){
+		return abilitievect[index];
+	}else{
+		exit(EXIT_FAILURE);
+	}
+
+    }
+
+    friend Abilitie& operator,(Abilitie& left,const Abilitie& right){
+    	Abilitie::abilitievect.push_back(right);
+	return left;
+    }
+
 };
 
 enum at_def {attacker, defender};
@@ -100,8 +130,11 @@ bool IsInBall(enum at_def at_def, int /*ingore*/){
 #define CREATE ;
 
 #define POKEMON Pokemon
+#define POKEMONS Pokemon::pokemonvect
 
 #define ABILITY Abilitie
+#define ABILITIES Abilitie::abilitievector
+
 #define ACTION []() { 0 ? 1
 #define START 1 + 1;(1+1
 
