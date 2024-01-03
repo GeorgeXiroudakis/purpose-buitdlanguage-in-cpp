@@ -27,21 +27,9 @@ public:
 
     Pokemon(){}
 
-    Pokemon(std::string _name, std::string _type, int _hp);/*{
-        this->name = _name;
-        this->hp = _hp;
-        this->type = _type;
+    Pokemon(std::string _name, std::string _type, int _hp);
 
-        pokemonvect.push_back(*this);
-
-    }*/
-
-     int friend operator,(Pokemon& left, const Pokemon& right);/*{
-            pokemonvect.push_back(right);
-            pokemonvect.push_back(left);
-            return 0;
-    }*/
-
+     int friend operator,(Pokemon& left, const Pokemon& right);
 
 };
 
@@ -49,8 +37,18 @@ class PokemonCollection {
 public:
     static std::vector<Pokemon> pokemonvect;
 
-    Pokemon& operator[](int index){
-        return pokemonvect[index];
+    void operator[](Pokemon& other){
+        pokemonvect.push_back(other);
+    }
+
+    // Optional: Define the operator[] to access a Pokemon by index
+    Pokemon& operator[](size_t index) {
+        if (index < pokemonvect.size()) {
+            return pokemonvect[index];
+        } else {
+            // Handle out-of-bounds access or throw an exception
+            throw std::out_of_range("Index out of bounds");
+        }
     }
 
 };
@@ -65,7 +63,7 @@ Pokemon::Pokemon(std::string _name, std::string _type, int _hp) {
 }
 
 int operator,(Pokemon& left, const Pokemon& right){
-    PokemonCollection::pokemonvect.push_back(right);
+    //PokemonCollection::pokemonvect.push_back(right);
     PokemonCollection::pokemonvect.push_back(left);
     return 0;
 }
