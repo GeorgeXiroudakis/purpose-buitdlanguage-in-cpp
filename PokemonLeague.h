@@ -39,7 +39,7 @@ public:
      int friend operator,(Pokemon& left, const Pokemon& right);/*{
             pokemonvect.push_back(right);
             pokemonvect.push_back(left);
-	return 0;
+            return 0;
     }*/
 
 
@@ -49,8 +49,8 @@ class PokemonCollection {
 public:
     static std::vector<Pokemon> pokemonvect;
 
-    Pokemon& operator[](Pokemon index){
-        return pokemonvect[0];
+    Pokemon& operator[](int index){
+        return pokemonvect[index];
     }
 
 };
