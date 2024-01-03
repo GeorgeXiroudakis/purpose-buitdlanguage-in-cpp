@@ -71,9 +71,9 @@ public:
 
     void operator[](const std::string abName){
         for(auto & i : pokemonvect){
-            if(i.name.compare(this->name)){
+            if(i.name.compare(this->name) == 0){
                 for(auto & y : abilitiesvect){
-                    if(y.name.compare(abName)){
+                    if(y.name.compare(abName) == 0){
                         i.LearnedAbilities.push_back(y);
                     }
                 }

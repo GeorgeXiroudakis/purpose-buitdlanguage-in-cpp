@@ -87,8 +87,8 @@ BEGIN_GAME
             }
     ]
 
-    DEAR "pokemon name" LEARN [
-        ABILITY_NAME(TEST ABILITY)
+    DEAR "Squirtle" LEARN [
+        ABILITY_NAME(TEST ABILITY3)
     ]
 
 //    ;
@@ -99,5 +99,6 @@ BEGIN_GAME
 //for(auto & i : abilitiesvect){
 //    std::cout << i.name << std::endl;
 //}
+;std::cout << pokemonvect[1].LearnedAbilities[0].name;
 
 END_GAME
