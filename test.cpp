@@ -7,6 +7,7 @@
 
 BEGIN_GAME
 
+    //single pokemon creation
     CREATE POKEMON {
             NAME: "Pikachu",
             TYPE: "Electric",
@@ -19,6 +20,22 @@ BEGIN_GAME
             HP: 100
     }
 
+
+    //multiple pokemon creation
+    CREATE POKEMONS [
+            POKEMON{
+                    NAME: "snorlax",
+                    TYPE: "Fire",
+                    HP: 120
+            },
+            POKEMON{
+                    NAME: "Bulbasaur",
+                    TYPE: "Grass",
+                    HP: 85
+            }
+    ]
+
+    //single abbility creation
     CREATE ABILITY {
             NAME: "HEAL ME",
             ACTION: START
@@ -38,24 +55,13 @@ BEGIN_GAME
         END
     }
 
-    CREATE POKEMONS [
-            POKEMON{
-                    NAME: "snorlax",
-                    TYPE: "Fire",
-                    HP: 120
-            },
-            POKEMON{
-                    NAME: "Bulbasaur",
-                    TYPE: "Grass",
-                    HP: 85
-            }
-    ]
 
+    //multiple abilite creation
     CREATE ABILITIES [
             ABILITY {
             NAME: "scare_then_damage",
              ACTION: START
-                        SHOW "I the attacker: " << GET_NAME(ATTACKER) << " will damege you\n"
+                        SHOW "I the attacker: " << GET_NAME(ATTACKER) << " will damage you\n"
                         DAMAGE DEFENDER 20
                 END
             },
@@ -67,6 +73,7 @@ BEGIN_GAME
             }
     ]
 
+    //single learn
     DEAR "Pikachu" LEARN [
         ABILITY_NAME(scare_then_damage)
     ]
