@@ -59,6 +59,7 @@ BEGIN_GAME
 
     //multiple abilite creation
     CREATE ABILITIES [
+            //ability with show
             ABILITY {
             NAME: "scare_then_damage",
              ACTION: START
