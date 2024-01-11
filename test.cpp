@@ -37,6 +37,14 @@ BEGIN_GAME
 
     //single abbility creation
     CREATE ABILITY {
+    NAME: "HIDE",
+    ACTION: START
+            POKEBALL DEFENDER _
+        END
+    }
+
+    //single abbility creation with if
+    CREATE ABILITY {
             NAME: "HEAL ME",
             ACTION: START
 
@@ -46,13 +54,6 @@ BEGIN_GAME
                     HEAL ATTACKER 10
                 END
             END_OUT
-    }
-
-    CREATE ABILITY {
-        NAME: "HIDE",
-        ACTION: START
-            POKEBALL DEFENDER _
-        END
     }
 
 
