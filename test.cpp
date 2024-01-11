@@ -20,21 +20,22 @@ BEGIN_GAME
     }
 
     CREATE ABILITY {
-            NAME: "TEST ABILITY",
+            NAME: "HEAL ME",
             ACTION: START
-                DAMAGE DEFENDER 20
-                DAMAGE ATTACKER 50
-                HEAL DEFENDER 30
-                HEAL ATTACKER 70
-                GET_HP(DEFENDER)
-                GET_HP(ATTACKER)
-                GET_TYPE(DEFENDER)
-                GET_TYPE(ATTACKER)
-                GET_NAME(DEFENDER)
-                GET_NAME(ATTACKER)
-                IS_IN_POKEBALL(DEFENDER)
-                IS_IN_POKEBALL(ATTACKER)
-            END
+
+                IF GET_HP(ATTACKER) < 30 DO
+                    HEAL ATTACKER 50
+                ELSE
+                    HEAL ATTACKER 10
+                END
+            END_OUT
+    }
+
+    CREATE ABILITY {
+        NAME: "HIDE",
+        ACTION: START
+            POKEBALL DEFENDER _
+        END
     }
 
     CREATE POKEMONS [
@@ -52,53 +53,28 @@ BEGIN_GAME
 
     CREATE ABILITIES [
             ABILITY {
-            NAME: "TEST ABILITY2",
+            NAME: "scare_then_damage",
              ACTION: START
+                        SHOW "I the attacker: " << GET_NAME(ATTACKER) << " will damege you\n"
                         DAMAGE DEFENDER 20
-                        DAMAGE ATTACKER 50
-                        HEAL DEFENDER 30
-                        HEAL ATTACKER 70
-                        GET_HP(DEFENDER)
-                        GET_HP(ATTACKER)
-                        GET_TYPE(DEFENDER)
-                        GET_TYPE(ATTACKER)
-                        GET_NAME(DEFENDER)
-                        GET_NAME(ATTACKER)
-                        IS_IN_POKEBALL(DEFENDER)
-                        IS_IN_POKEBALL(ATTACKER)
                 END
             },
             ABILITY {
-                    NAME: "TEST ABILITY3",
+                    NAME: "big_heal",
                     ACTION: START
-                        DAMAGE DEFENDER 20
-                        DAMAGE ATTACKER 50
-                        HEAL DEFENDER 30
                         HEAL ATTACKER 70
-                        GET_HP(DEFENDER)
-                        GET_HP(ATTACKER)
-                        GET_TYPE(DEFENDER)
-                        GET_TYPE(ATTACKER)
-                        GET_NAME(DEFENDER)
-                        GET_NAME(ATTACKER)
-                        IS_IN_POKEBALL(DEFENDER)
-                        IS_IN_POKEBALL(ATTACKER)
                     END
             }
     ]
 
-    DEAR "Squirtle" LEARN [
-        ABILITY_NAME(TEST ABILITY3)
+    DEAR "Pikachu" LEARN [
+        ABILITY_NAME(scare_then_damage)
     ]
 
-//    ;
-//for(auto & i : pokemonvect){
-//    std::cout << i.name << std::endl;
-//}
-//
-//for(auto & i : abilitiesvect){
-//    std::cout << i.name << std::endl;
-//}
-;std::cout << pokemonvect[1].LearnedAbilities[0].name;
+    DEAR "Pikachu" LEARN [
+            ABILITY_NAME(big_heal)
+    ]
+
+    ;attackerPok = pokemonvect[0];pokemonvect[0].LearnedAbilities[0].foo();std::cout << attackerPok.hp;
 
 END_GAME
