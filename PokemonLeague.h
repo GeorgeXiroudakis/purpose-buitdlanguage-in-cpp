@@ -10,6 +10,7 @@
 #include <utility>
 #include <vector>
 #include <functional>
+#include <cstdarg>
 
 class Pokemon;
 class Abilitie;
@@ -96,6 +97,7 @@ public:
 
 Pokemon attackerPok;
 Pokemon defenderPok;
+long int round = 0;
 
 void dealDamageTo(/*std::string str*/ enum at_def at_def, int points){
     if(at_def == attacker)attackerPok.hp -= points;
@@ -136,7 +138,24 @@ void inOutPokeball(enum at_def at_def, std::string in_out){
     }
 }
 
-bool andFunc(bool first, bool second){return first && second;}
+
+
+
+bool andFunc(const std::vector<bool>& args) {
+    bool result = true;
+    for (bool arg : args) {
+        result = result && arg;
+    }
+    return result;
+}
+
+bool orFunc(const std::vector<bool>& args) {
+    bool result = false;
+    for (bool arg : args) {
+        result = result || arg;
+    }
+    return result;
+}
 
 
 void printPokemons() {
@@ -186,6 +205,17 @@ void printPokeAbilities(std::string pokeName){
     }
 }
 
+bool isPokeDead(Pokemon poke){
+    if(poke.hp <= 0) return true;
+    return false;
+}
+
+void printPokeStatus(Pokemon poke){
+    std::cout << "NAME: " << poke.name << std::endl <<
+                 "HP: "  << poke.hp << std::endl <<
+                 "Type: " << poke.type << std::endl;
+}
+
 
 #define BEGIN_GAME \
     int main() {
@@ -226,7 +256,10 @@ void printPokeAbilities(std::string pokeName){
 #define IF  if(
 #define DO ){
 #define ELSE  );}else{
-#define AND ); andfunc
+#define NOT !
+#define AND(...) andFunc({__VA_ARGS__, true})
+#define OR(...) orFunc({__VA_ARGS__, false})
+
 
 #define DEAR ;Learning(
 #define LEARN )
