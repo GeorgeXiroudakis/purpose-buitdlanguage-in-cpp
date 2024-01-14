@@ -103,7 +103,7 @@ BEGIN_GAME
             ABILITY {
             NAME: "scare_then_damage",
              ACTION: START
-                        SHOW "I the attacker: " << GET_NAME(ATTACKER) << " will damage you\n"
+                        SHOW "\n!!!!!!!!!I the attacker: " << GET_NAME(ATTACKER) << " will damage you!!!!!!!\n\n"
                         DAMAGE DEFENDER 20
                 END
             },
@@ -145,7 +145,7 @@ BEGIN_GAME
     ]
 
     DEAR "Bulbasaur" LEARN[
-        ABILITY_NAME(biig_heal)
+        ABILITY_NAME(big_heal)
     ]
 
     DUEL

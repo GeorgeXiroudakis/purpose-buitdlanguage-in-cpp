@@ -322,6 +322,7 @@ void fight(){
     std::cout << "---------------" << std::endl;
     printPokemons();
     std::cout << "---------------" << std::endl;
+    std::cout << ">";
     while(flag == false){
         std::cin >> selection1;
 
@@ -334,6 +335,7 @@ void fight(){
         }
         if(flag == false){
             std::cout << "Invalid Pokemon name please try again." << std::endl;
+            std::cout << ">";
         }
     }
     std::cout << attackerPok.name << std::endl;
@@ -342,6 +344,7 @@ void fight(){
     std::cout << "---------------" << std::endl;
     printPokemons();
     std::cout << "---------------" << std::endl;
+    std::cout << ">";
     flag = false;
     while(flag == false){
         std::cin >> selection1;
@@ -355,6 +358,7 @@ void fight(){
         }
         if(flag == false){
             std::cout << "Invalid Pokemon name please try again." << std::endl;
+            std::cout << ">";
         }
     }
     std::cout << defenderPok.name << std::endl;
@@ -367,6 +371,7 @@ void fight(){
         std::cout << attackerPok.name << "(Player1) select ability:" << std::endl;
         std:: cout << "---------------" << std::endl;
         printPokeAbilities(attackerPok.name);
+        std::cout << ">";
         flag = false;
         while(flag != true){
             std::cin >> selection1;
@@ -379,6 +384,7 @@ void fight(){
             }
             if(flag == false){
                 std::cout << "Invalid ability name please try again." << std::endl;
+                std::cout << ">";
             }
         }
         abilitie1.foo();
@@ -396,6 +402,7 @@ void fight(){
         std::cout << defenderPok.name << "(Player2) select ability:" << std::endl;
         std::cout << "---------------" <<std::endl;
         printPokeAbilities(defenderPok.name);
+        std::cout << ">";
         flag = false;
         while(flag != true){
             std::cin >> selection2;
@@ -408,6 +415,7 @@ void fight(){
             }
             if(flag == false){
                 std::cout << "Invalid ability name please try again." << std::endl;
+                std::cout << ">";
             }
         }
         abilitie2.foo();
