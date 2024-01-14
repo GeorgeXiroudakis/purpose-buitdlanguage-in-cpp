@@ -100,8 +100,102 @@ Pokemon defenderPok;
 long int round = 0;
 
 void dealDamageTo(/*std::string str*/ enum at_def at_def, int points){
-    if(at_def == attacker)attackerPok.hp -= points;
-    else defenderPok.hp -= points;
+    if(at_def != attacker){
+        //Case where we are electric 
+        if(attackerPok.type == "Electric"){
+            //If the one attacking us is Fire and if it isnt
+            if(defenderPok.type == "Fire"){
+                attackerPok.hp -= (points - points * 0,1);
+            }else if(defenderPok.type == "Water"){ //Case where pokemon is Water
+                attackerPok.hp -= (points - points * 0,13);
+            }else if(defenderPok.type == "Grass"){ //Case where pokemon is Grass
+                if(round % 2 == 1){
+                    attackerPok.hp -= (points - points * 0,13);
+                }else{
+                    attackerPok.hp -= (points - points * 0,2);
+                }
+            }else{
+                attackerPok.hp -= (points - points * 0,2); //Case where pokemon isnt Fire,Water or Grass
+            }
+        //Case where we are Water    
+        }else if(attackerPok.type == "Water"){
+            if(defenderPok.type == "Fire"){ //Case where pokemon is Fire
+                attackerPok.hp -= (points + points * (8/100)); //For some reason 0,08 was invalid idk
+            }else if(defenderPok.type == "Grass"){ //Case where pokemon is Grass
+                if(round % 2 == 1){
+                    attackerPok.hp -= points;
+                }else{
+                    attackerPok.hp -= (points - points * 0,07);
+                }
+            }else if(defenderPok.type == "Water"){ //Case where pokemon is Water
+                attackerPok.hp -= points;
+            }else{ //Case where it isnt Fire,Grass or Water
+                attackerPok.hp -= (points - points * 0,07);
+            }
+
+        }else{
+            if(defenderPok.type == "Fire"){
+                attackerPok.hp -= (points + points * 0,15);
+            }else if (defenderPok.type == "Water"){
+                attackerPok.hp -= (points + points * 0,07);
+            }else if(defenderPok.type == "Grass"){
+                if(round % 2 == 1){
+                    attackerPok.hp -= (points + points * 0,07);
+                }else{
+                    attackerPok.hp -= points;
+                }
+            }else{
+                attackerPok.hp -= points;
+            }
+        }
+    }else{ 
+         if(defenderPok.type == "Electric"){
+            //If the one attacking us is Fire and if it isnt
+            if(attackerPok.type == "Fire"){
+                defenderPok.hp -= (points - points * 0,1);
+            }else if(attackerPok.type == "Water"){ //Case where pokemon is Water
+                defenderPok.hp -= (points - points * 0,13);
+            }else if(attackerPok.type == "Grass"){ //Case where pokemon is Grass
+                if(round % 2 == 1){
+                    defenderPok.hp -= (points - points * 0,13);
+                }else{
+                    defenderPok.hp -= (points - points * 0,2);
+                }
+            }else{
+                defenderPok.hp -= (points - points * 0,2); //Case where pokemon isnt Fire,Water or Grass
+            }
+        //Case where we are Water    
+        }else if(defenderPok.type == "Water"){
+            if(attackerPok.type == "Fire"){ //Case where pokemon is Fire
+                defenderPok.hp -= (points + points * (8/100)); //For some reason 0,08 was invalid idk
+            }else if(attackerPok.type == "Grass"){ //Case where pokemon is Grass
+                if(round % 2 == 1){
+                    defenderPok.hp -= points;
+                }else{
+                    defenderPok.hp -= (points - points * 0,07);
+                }
+            }else if(attackerPok.type == "Water"){ //Case where pokemon is Water
+                defenderPok.hp -= points;
+            }else{ //Case where it isnt Fire,Grass or Water
+                defenderPok.hp -= (points - points * 0,07);
+            }
+
+        }else{
+            if(attackerPok.type == "Fire"){
+                defenderPok.hp -= (points + points * 0,15);
+            }else if (attackerPok.type == "Water"){
+                defenderPok.hp -= (points + points * 0,07);
+            }else if(attackerPok.type == "Grass"){
+                if(round % 2 == 1){
+                    defenderPok.hp -= (points + points * 0,07);
+                }else{
+                    defenderPok.hp -= points;
+                }
+            }else{
+                defenderPok.hp -= points;
+            }
+        }
+    }
 }
 
 void healThe(enum at_def at_def, int points){
@@ -216,6 +310,130 @@ void printPokeStatus(Pokemon poke){
                  "Type: " << poke.type << std::endl;
 }
 
+void fight(){
+
+    std::string selection1;
+    std::string selection2;
+    Abilitie abilitie1;
+    Abilitie abilitie2;
+    bool flag = false;
+
+    std::cout << "-------------------- POKEMON THE GAME --------------------" << std::endl;
+
+    std::cout << std::endl << "Player1 select pokemon:" << std::endl;
+    std::cout << "---------------" << std::endl;
+    printPokemons();
+    std::cout << "---------------" << std::endl;
+    while(flag == false){
+        std::cin >> selection1;
+
+        for(auto poke : pokemonvect){
+            if(poke.name == selection1){
+                flag = true;
+                attackerPok = poke;
+                break;
+            }
+        }
+        if(flag == false){
+            std::cout << "Invalid Pokemon name please try again." << std::endl;
+        }
+    }
+    std::cout << attackerPok.name << std::endl;
+
+    std::cout << std::endl << "Player2 select pokemon:" << std::endl;
+    std::cout << "---------------" << std::endl;
+    printPokemons();
+    std::cout << "---------------" << std::endl;
+    flag = false;
+    while(flag == false){
+        std::cin >> selection1;
+
+        for(auto poke : pokemonvect){
+            if(poke.name == selection1){
+                flag = true;
+                defenderPok = poke;
+                break;
+            }
+        }
+        if(flag == false){
+            std::cout << "Invalid Pokemon name please try again." << std::endl;
+        }
+    }
+    std::cout << defenderPok.name << std::endl;
+    round++;
+    while(attackerPok.hp > 0 && defenderPok.hp > 0){
+        std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+        std::cout << "     " << "Round" << round << std::endl;
+        std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+        
+        std::cout << attackerPok.name << "(Player1) select ability:" << std::endl;
+        std:: cout << "---------------" << std::endl;
+        printPokeAbilities(attackerPok.name);
+        flag = false;
+        while(flag != true){
+            std::cin >> selection1;
+            for(int i = 0;i < attackerPok.LearnedAbilities.size();i++){
+                if(selection1 == attackerPok.LearnedAbilities[i].name){
+                    abilitie1 = attackerPok.LearnedAbilities[i];
+                    flag = true;
+                    break;
+                }
+            }
+            if(flag == false){
+                std::cout << "Invalid ability name please try again." << std::endl;
+            }
+        }
+        abilitie1.foo();
+        
+        std::cout << std::endl << "###############" << std::endl;
+        printPokeStatus(attackerPok);
+        std::cout << "###############" << std::endl << std::endl;
+        printPokeStatus(defenderPok);
+        std::cout << "###############" <<std::endl << std::endl;
+
+        if(defenderPok.hp <= 0 ){
+            break;
+        }
+
+        std::cout << defenderPok.name << "(Player2) select ability:" << std::endl;
+        std::cout << "---------------" <<std::endl;
+        printPokeAbilities(defenderPok.name);
+        flag = false;
+        while(flag != true){
+            std::cin >> selection2;
+            for(int i = 0;i < defenderPok.LearnedAbilities.size();i++){
+                if(selection2 == defenderPok.LearnedAbilities[i].name){
+                    abilitie2 = defenderPok.LearnedAbilities[i];
+                    flag = true;
+                    break;
+                }
+            }
+            if(flag == false){
+                std::cout << "Invalid ability name please try again." << std::endl;
+            }
+        }
+        abilitie2.foo();
+        std::cout << std::endl << "###############" << std::endl;
+        printPokeStatus(attackerPok);
+        std::cout << "###############" << std::endl << std::endl;
+        printPokeStatus(defenderPok);
+        std::cout << "###############" <<std::endl << std::endl;
+        round++;
+
+    }
+
+    if(attackerPok.hp <= 0){
+        std::cout << attackerPok.name << " has fainted!" << std::endl;
+        std::cout << defenderPok.name << " wins!" <<std::endl;
+    }else{
+        std::cout << defenderPok.name << " has fainted!" << std::endl;
+        std::cout << attackerPok.name << " wins!" <<std::endl;
+    }
+
+
+
+}
+
 
 #define BEGIN_GAME \
     int main() {
@@ -269,5 +487,7 @@ void printPokeStatus(Pokemon poke){
 #define END_OUT }
 
 #define SHOW ;std::cout <<
+
+#define DUEL ;fight();
 
 #endif //PAR_POKEMONLEAGUE_H

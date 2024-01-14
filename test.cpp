@@ -43,6 +43,17 @@ BEGIN_GAME
         END
     }
 
+    CREATE ABILITY {
+        NAME: "TYPE_ATTACK",
+        ACTION: START
+            IF GET_TYPE(DEFENDER) == "Grass" DO
+                DAMAGE ATTACKER 60
+            ELSE
+                DAMAGE DEFENDER 30
+            END
+        END_OUT
+    }
+
     //single abbility creation with if else
     CREATE ABILITY {
             NAME: "HEAL_ME",
@@ -68,7 +79,7 @@ BEGIN_GAME
 
     //single abbility creation with if and
     CREATE ABILITY {
-    NAME: "HIGHT_HP_LITTLE_DAMEGE",
+    NAME: "MID_HP_MID_DAMAGE",
     ACTION: START
         IF AND (GET_HP(ATTACKER) < 90, GET_HP(ATTACKER) < 200, GET_HP(ATTACKER) < 70) DO
             DAMAGE DEFENDER 80
@@ -78,10 +89,10 @@ BEGIN_GAME
 
     //single abbility creation with if or
     CREATE ABILITY {
-    NAME: "HIGHT_HP_OR_LOW_BIG_DAMGE",
+    NAME: "HIGH_HP_OR_LOW_BIG_DAMAGE",
     ACTION: START
         IF OR (GET_HP(ATTACKER) < 15, GET_HP(ATTACKER) < 120, GET_HP(ATTACKER) < 170) DO
-            DAMAGE ATTACKER 80
+            DAMAGE ATTACKER 40
         END
     END_OUT
     }
@@ -107,12 +118,38 @@ BEGIN_GAME
 
     //single learn
     DEAR "Pikachu" LEARN [
-        ABILITY_NAME(HIGHT_HP_OR_LOW_BIG_DAMGE)
+        ABILITY_NAME(HIGH_HP_OR_LOW_BIG_DAMAGE)
     ]
 
     DEAR "Pikachu" LEARN [
             ABILITY_NAME(big_heal)
     ]
+
+    DEAR "Pikachu" LEARN [
+            ABILITY_NAME(NEAR_DEATH_STRENGTH)
+    ]
+
+    DEAR "Pikachu" LEARN [
+            ABILITY_NAME(TYPE_ATTACK)
+    ]
+
+    DEAR "Bulbasaur" LEARN[
+        ABILITY_NAME(scare_then_damage)
+    ]
+    
+    DEAR "Bulbasaur" LEARN[
+        ABILITY_NAME(MID_HP_MID_DAMAGE)
+    ]
+
+    DEAR "Bulbasaur" LEARN[
+        ABILITY_NAME(TYPE_ATTACK)
+    ]
+
+    DEAR "Bulbasaur" LEARN[
+        ABILITY_NAME(biig_heal)
+    ]
+
+    DUEL
 
     //;attackerPok = pokemonvect[0];pokemonvect[0].LearnedAbilities[0].foo();std::cout << attackerPok.hp;
 
