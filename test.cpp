@@ -43,13 +43,14 @@ BEGIN_GAME
         END
     }
 
+    //single abbility creation with if else
     CREATE ABILITY {
         NAME: "TYPE_ATTACK",
         ACTION: START
             IF GET_TYPE(DEFENDER) == "Grass" DO
-                DAMAGE ATTACKER 60
+                DAMAGE ATTACKER 70
             ELSE
-                DAMAGE DEFENDER 30
+                DAMAGE DEFENDER 35
             END
         END_OUT
     }
@@ -81,8 +82,8 @@ BEGIN_GAME
     CREATE ABILITY {
     NAME: "MID_HP_MID_DAMAGE",
     ACTION: START
-        IF AND (GET_HP(ATTACKER) < 90, GET_HP(ATTACKER) < 200, GET_HP(ATTACKER) < 70) DO
-            DAMAGE DEFENDER 80
+        IF AND (GET_HP(ATTACKER) < 70, GET_HP(ATTACKER) < 75, GET_HP(ATTACKER) > 40) DO
+            DAMAGE DEFENDER 50
         END
     END_OUT
     }
@@ -91,8 +92,8 @@ BEGIN_GAME
     CREATE ABILITY {
     NAME: "HIGH_HP_OR_LOW_BIG_DAMAGE",
     ACTION: START
-        IF OR (GET_HP(ATTACKER) < 15, GET_HP(ATTACKER) < 120, GET_HP(ATTACKER) < 170) DO
-            DAMAGE ATTACKER 40
+        IF OR (GET_HP(ATTACKER) < 15, GET_HP(ATTACKER) > 100, GET_HP(ATTACKER) < 10) DO
+            DAMAGE ATTACKER 75
         END
     END_OUT
     }
@@ -104,7 +105,7 @@ BEGIN_GAME
             NAME: "scare_then_damage",
              ACTION: START
                         SHOW "\n!!!!!!!!!I the attacker: " << GET_NAME(ATTACKER) << " will damage you!!!!!!!\n\n"
-                        DAMAGE ATTACKER 30
+                        DAMAGE ATTACKER 50
                 END
             },
             ABILITY {
@@ -180,9 +181,6 @@ BEGIN_GAME
         ABILITY_NAME(TYPE_ATTACK)
     ]
 
-
     DUEL
-
-    //;attackerPok = pokemonvect[0];pokemonvect[0].LearnedAbilities[0].foo();std::cout << attackerPok.hp;
 
 END_GAME
