@@ -56,7 +56,7 @@ BEGIN_GAME
             END_OUT
     }
 
-//single abbility creation with if not
+    //single abbility creation with if not
     CREATE ABILITY {
     NAME: "NEAR_DEATH_STRENGTH",
     ACTION: START
