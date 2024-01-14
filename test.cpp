@@ -104,7 +104,7 @@ BEGIN_GAME
             NAME: "scare_then_damage",
              ACTION: START
                         SHOW "\n!!!!!!!!!I the attacker: " << GET_NAME(ATTACKER) << " will damage you!!!!!!!\n\n"
-                        DAMAGE DEFENDER 20
+                        DAMAGE ATTACKER 30
                 END
             },
             ABILITY {
@@ -147,6 +147,39 @@ BEGIN_GAME
     DEAR "Bulbasaur" LEARN[
         ABILITY_NAME(big_heal)
     ]
+
+    DEAR "Squirtle" LEARN[
+        ABILITY_NAME(scare_then_damage)
+    ]
+
+    DEAR "Squirtle" LEARN[
+        ABILITY_NAME(big_heal)
+    ]
+
+    DEAR "Squirtle" LEARN[
+        ABILITY_NAME(NEAR_DEATH_STRENGTH)
+    ]
+
+    DEAR "Squirtle" LEARN[
+        ABILITY_NAME(HEAL_ME)
+    ]
+
+    DEAR "snorlax" LEARN[
+        ABILITY_NAME(big_heal)
+    ]
+
+    DEAR "snorlax" LEARN[
+        ABILITY_NAME(NEAR_DEATH_STRENGTH)
+    ]
+
+    DEAR "snorlax" LEARN[
+        ABILITY_NAME(MID_HP_MID_DAMAGE)
+    ]
+
+    DEAR "snorlax" LEARN[
+        ABILITY_NAME(TYPE_ATTACK)
+    ]
+
 
     DUEL
 
