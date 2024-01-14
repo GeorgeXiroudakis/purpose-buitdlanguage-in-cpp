@@ -109,7 +109,7 @@ void dealDamageTo(/*std::string str*/ enum at_def at_def, int points){
             }else if(defenderPok.type == "Water"){ //Case where pokemon is Water
                 attackerPok.hp -= (points - points * 0,13);
             }else if(defenderPok.type == "Grass"){ //Case where pokemon is Grass
-                if(round % 2 == 1){
+                if(rounds % 2 == 1){
                     attackerPok.hp -= (points - points * 0,13);
                 }else{
                     attackerPok.hp -= (points - points * 0,2);
@@ -122,7 +122,7 @@ void dealDamageTo(/*std::string str*/ enum at_def at_def, int points){
             if(defenderPok.type == "Fire"){ //Case where pokemon is Fire
                 attackerPok.hp -= (points + points * (8/100)); //For some reason 0,08 was invalid idk
             }else if(defenderPok.type == "Grass"){ //Case where pokemon is Grass
-                if(round % 2 == 1){
+                if(rounds % 2 == 1){
                     attackerPok.hp -= points;
                 }else{
                     attackerPok.hp -= (points - points * 0,07);
@@ -139,7 +139,7 @@ void dealDamageTo(/*std::string str*/ enum at_def at_def, int points){
             }else if (defenderPok.type == "Water"){
                 attackerPok.hp -= (points + points * 0,07);
             }else if(defenderPok.type == "Grass"){
-                if(round % 2 == 1){
+                if(rounds % 2 == 1){
                     attackerPok.hp -= (points + points * 0,07);
                 }else{
                     attackerPok.hp -= points;
@@ -156,7 +156,7 @@ void dealDamageTo(/*std::string str*/ enum at_def at_def, int points){
             }else if(attackerPok.type == "Water"){ //Case where pokemon is Water
                 defenderPok.hp -= (points - points * 0,13);
             }else if(attackerPok.type == "Grass"){ //Case where pokemon is Grass
-                if(round % 2 == 1){
+                if(rounds % 2 == 1){
                     defenderPok.hp -= (points - points * 0,13);
                 }else{
                     defenderPok.hp -= (points - points * 0,2);
@@ -169,7 +169,7 @@ void dealDamageTo(/*std::string str*/ enum at_def at_def, int points){
             if(attackerPok.type == "Fire"){ //Case where pokemon is Fire
                 defenderPok.hp -= (points + points * (8/100)); //For some reason 0,08 was invalid idk
             }else if(attackerPok.type == "Grass"){ //Case where pokemon is Grass
-                if(round % 2 == 1){
+                if(rounds % 2 == 1){
                     defenderPok.hp -= points;
                 }else{
                     defenderPok.hp -= (points - points * 0,07);
@@ -186,7 +186,7 @@ void dealDamageTo(/*std::string str*/ enum at_def at_def, int points){
             }else if (attackerPok.type == "Water"){
                 defenderPok.hp -= (points + points * 0,07);
             }else if(attackerPok.type == "Grass"){
-                if(round % 2 == 1){
+                if(rounds % 2 == 1){
                     defenderPok.hp -= (points + points * 0,07);
                 }else{
                     defenderPok.hp -= points;
@@ -308,7 +308,6 @@ void printPokeStatus(Pokemon poke){
                  "Type: " << poke.type << std::endl;
 }
 
-<<<<<<< HEAD
 void fight(){
 
     std::string selection1;
@@ -359,10 +358,10 @@ void fight(){
         }
     }
     std::cout << defenderPok.name << std::endl;
-    round++;
+    rounds++;
     while(attackerPok.hp > 0 && defenderPok.hp > 0){
         std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
-        std::cout << "     " << "Round" << round << std::endl;
+        std::cout << "     " << "Round" << rounds << std::endl;
         std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
         
         std::cout << attackerPok.name << "(Player1) select ability:" << std::endl;
@@ -417,7 +416,7 @@ void fight(){
         std::cout << "###############" << std::endl << std::endl;
         printPokeStatus(defenderPok);
         std::cout << "###############" <<std::endl << std::endl;
-        round++;
+        rounds++;
 
     }
 
@@ -431,14 +430,6 @@ void fight(){
 
 
 
-=======
-void nextTurn(){
-    rounds++;
-    Pokemon temp;
-    temp = defenderPok;
-    defenderPok = attackerPok;
-    attackerPok = temp;
->>>>>>> d16a26e025734bf86b452b050847aba8a8638ccc
 }
 
 
