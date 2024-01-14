@@ -86,7 +86,6 @@ BEGIN_GAME
     END_OUT
     }
 
-
     //multiple abilite creation
     CREATE ABILITIES [
             //ability with show
@@ -113,7 +112,5 @@ BEGIN_GAME
     DEAR "Pikachu" LEARN [
             ABILITY_NAME(big_heal)
     ]
-
-    //;attackerPok = pokemonvect[0];pokemonvect[0].LearnedAbilities[0].foo();std::cout << attackerPok.hp;
 
 END_GAME
