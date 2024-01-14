@@ -67,7 +67,7 @@ BEGIN_GAME
             END_OUT
     }
 
-//single abbility creation with if not
+    //single abbility creation with if not
     CREATE ABILITY {
     NAME: "NEAR_DEATH_STRENGTH",
     ACTION: START
@@ -97,7 +97,6 @@ BEGIN_GAME
     END_OUT
     }
 
-
     //multiple abilite creation
     CREATE ABILITIES [
             //ability with show
@@ -125,6 +124,7 @@ BEGIN_GAME
             ABILITY_NAME(big_heal)
     ]
 
+<<<<<<< HEAD
     DEAR "Pikachu" LEARN [
             ABILITY_NAME(NEAR_DEATH_STRENGTH)
     ]
@@ -153,4 +153,6 @@ BEGIN_GAME
 
     //;attackerPok = pokemonvect[0];pokemonvect[0].LearnedAbilities[0].foo();std::cout << attackerPok.hp;
 
+=======
+>>>>>>> d16a26e025734bf86b452b050847aba8a8638ccc
 END_GAME

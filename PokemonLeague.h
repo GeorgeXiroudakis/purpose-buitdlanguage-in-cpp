@@ -67,11 +67,11 @@ public:
 };
 
 
-class healclass{
-public:
-    healclass(enum at_def at_def, int points){ healThe(at_def, points);}
-
-};
+//class healclass{
+//public:
+//    healclass(enum at_def at_def, int points){ healThe(at_def, points);}
+//
+//};
 
 
 class Learning{
@@ -97,7 +97,7 @@ public:
 
 Pokemon attackerPok;
 Pokemon defenderPok;
-long int round = 0;
+long int rounds = 0;
 
 void dealDamageTo(/*std::string str*/ enum at_def at_def, int points){
     if(at_def != attacker){
@@ -232,9 +232,6 @@ void inOutPokeball(enum at_def at_def, std::string in_out){
     }
 }
 
-
-
-
 bool andFunc(const std::vector<bool>& args) {
     bool result = true;
     for (bool arg : args) {
@@ -304,12 +301,14 @@ bool isPokeDead(Pokemon poke){
     return false;
 }
 
+
 void printPokeStatus(Pokemon poke){
     std::cout << "NAME: " << poke.name << std::endl <<
                  "HP: "  << poke.hp << std::endl <<
                  "Type: " << poke.type << std::endl;
 }
 
+<<<<<<< HEAD
 void fight(){
 
     std::string selection1;
@@ -432,6 +431,14 @@ void fight(){
 
 
 
+=======
+void nextTurn(){
+    rounds++;
+    Pokemon temp;
+    temp = defenderPok;
+    defenderPok = attackerPok;
+    attackerPok = temp;
+>>>>>>> d16a26e025734bf86b452b050847aba8a8638ccc
 }
 
 
